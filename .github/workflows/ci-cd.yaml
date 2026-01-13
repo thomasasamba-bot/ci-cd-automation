@@ -40,6 +40,8 @@ jobs:
         run: |
           cd terraform
           terraform init
+          # Try to import any existing repository to avoid "AlreadyExists" errors in ephemeral CI
+          terraform import aws_ecr_repository.app_repo rails-lambda-connector || true
           terraform apply -auto-approve
 
       - name: Set up Docker Buildx
