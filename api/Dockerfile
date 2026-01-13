@@ -1,7 +1,7 @@
 FROM public.ecr.aws/lambda/ruby:3.2
 
 # Install dependencies (if any native extensions needed)
-RUN yum install -y git make gcc
+RUN yum install -y git make gcc libyaml-devel
 
 # Copy app
 COPY . ${LAMBDA_TASK_ROOT}
